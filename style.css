@@ -7,9 +7,18 @@
   border: solid 20px rgb(121, 120, 120);
   width: 500px;
   height: 200px;
-  padding: 30px;
-  font-size: 90px;
+  padding: 25px;
   background-color: rgb(240, 233, 223);
+}
+
+.main--screen {
+  font-size: 70px;
+  border: solid px black;
+  text-align: right;
+}
+
+.top--screen {
+  font-size: 30px;
   text-align: right;
 }
 

@@ -1,13 +1,15 @@
 "use strict";
 
 const containerButtons = document.querySelector(".buttons");
-const containerScreen = document.querySelector(".screen");
+const containerMainScreen = document.querySelector(".main--screen");
+const containerTopScreen = document.querySelector(".top--screen");
 let firstNum = "";
 let operator = "";
 let secondNum = "";
 
 const init = function () {
-  containerScreen.textContent = "";
+  containerMainScreen.textContent = "";
+  containerTopScreen.textContent = "";
   firstNum = "";
   operator = "";
   secondNum = "";
@@ -23,21 +25,25 @@ const operate = function (a, b, c) {
 containerButtons.addEventListener("click", function (e) {
   if (e.target.classList.contains("buttons")) return;
   if (e.target.classList.contains("button--digit") && operator === "") {
+    if (firstNum.length === 10) firstNum = firstNum.slice(0, -1);
     firstNum += e.target.dataset.button;
-    containerScreen.textContent = firstNum;
+    containerMainScreen.textContent = firstNum;
   }
   if (e.target.classList.contains("button--digit") && operator !== "") {
     secondNum += e.target.dataset.button;
-    containerScreen.textContent = secondNum;
+    containerMainScreen.textContent = `${operator} ${secondNum}`;
   }
   if (e.target.classList.contains("button--operator")) {
     if (secondNum !== "") return;
     operator = e.target.dataset.button;
-    containerScreen.textContent = `${firstNum} ${operator}`;
+    containerTopScreen.textContent = `${firstNum}`;
+    containerMainScreen.textContent = `${operator}`;
   }
   if (e.target.classList.contains("button--clear")) init();
-  if (e.target.classList.contains("button--equals"))
-    containerScreen.textContent = operate(+firstNum, operator, +secondNum);
+  if (e.target.classList.contains("button--equals")) {
+    containerTopScreen.textContent = `${firstNum} ${operator} ${secondNum}`;
+    containerMainScreen.textContent = operate(+firstNum, operator, +secondNum);
+  }
 });
 
 init();
