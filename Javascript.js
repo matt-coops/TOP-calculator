@@ -6,6 +6,7 @@ const containerTopScreen = document.querySelector(".top--screen");
 let firstNum = "";
 let operator = "";
 let secondNum = "";
+let result = "";
 
 const init = function () {
   containerMainScreen.textContent = "";
@@ -13,6 +14,7 @@ const init = function () {
   firstNum = "";
   operator = "";
   secondNum = "";
+  result = "";
 };
 
 const operate = function (a, b, c) {
@@ -34,15 +36,23 @@ containerButtons.addEventListener("click", function (e) {
     containerMainScreen.textContent = `${operator} ${secondNum}`;
   }
   if (e.target.classList.contains("button--operator")) {
-    if (secondNum !== "") return;
+    if (secondNum !== "") {
+      firstNum = operate(+firstNum, operator, +secondNum);
+      secondNum = "";
+    }
     operator = e.target.dataset.button;
     containerTopScreen.textContent = `${firstNum}`;
     containerMainScreen.textContent = `${operator}`;
   }
   if (e.target.classList.contains("button--clear")) init();
   if (e.target.classList.contains("button--equals")) {
+    if (!firstNum || !operator || !secondNum) return;
     containerTopScreen.textContent = `${firstNum} ${operator} ${secondNum}`;
-    containerMainScreen.textContent = operate(+firstNum, operator, +secondNum);
+    result = operate(+firstNum, operator, +secondNum);
+    containerMainScreen.textContent = result;
+    firstNum = result;
+    operator = "";
+    secondNum = "";
   }
 });
 
