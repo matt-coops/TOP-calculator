@@ -1,49 +1,92 @@
+:root {
+  --calc: rgb(163, 162, 162);
+  --buttons: rgb(214, 212, 212);
+  --operators: rgb(240, 183, 109);
+  --screen: rgb(214, 230, 236);
+  --clear: rgb(109, 231, 240);
+  --delete: #ececec;
+  --background: rgb(66, 44, 2);
+}
+
 * {
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background);
 }
 
 .screen {
-  border: solid 20px rgb(121, 120, 120);
+  border: solid 20px var(--calc);
   width: 500px;
   height: 200px;
   padding: 25px;
-  background-color: rgb(214, 230, 236);
+  background-color: var(--screen);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 
 .main--screen {
+  background-color: var(--screen);
   font-size: 70px;
-  border: solid px black;
   text-align: right;
 }
 
 .top--screen {
+  background-color: var(--screen);
   font-size: 30px;
   text-align: right;
 }
 
-.buttons {
-  background-color: rgb(121, 120, 120);
+.rect--buttons {
+  background-color: var(--calc);
+  /* border: solid 2px rgb(51, 51, 51); */
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+  padding: 40px 0px 0px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.rect--button {
+  text-align: center;
+  width: 205px;
+  height: 50px;
+  border: solid 1px black;
+  margin: 4px;
+  background-color: var(--buttons);
+  font-size: 30px;
+  cursor: default;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 0px 0px 0px;
+}
+
+.square--buttons {
+  background-color: var(--calc);
   /* border: solid 2px rgb(51, 51, 51); */
   display: flex;
   flex-wrap: wrap;
   width: 500px;
   height: 500px;
-  padding: 30px;
+  padding: 5px 30px 30px 30px;
   justify-content: center;
   align-items: center;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
-.button {
+.square--button {
   padding-top: 20px;
   text-align: center;
   width: 100px;
   height: 100px;
   border: solid 1px black;
-  margin: 2px;
-  background-color: rgb(182, 182, 182);
+  margin: 3px;
+  background-color: var(--buttons);
   font-size: 30px;
   cursor: default;
+  border-radius: 5px;
 }
 
 .button:active {
@@ -51,9 +94,9 @@
 }
 
 .button--operator {
-  background-color: rgb(240, 183, 109);
+  background-color: var(--operators);
 }
 
 .button--clear {
-  background-color: rgb(177, 242, 247);
+  background-color: var(--clear);
 }
